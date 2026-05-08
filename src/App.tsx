@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import ArcadeMachine from './components/ArcadeMachine'
 import './styles/theme.css'
 
