@@ -85,8 +85,8 @@ export const projects: Project[] = [
 ]
 
 export const heroContent = {
-  name: 'Mehmet Ozkan',
-  title: 'Pixel Architect & Code Wizard',
-  tagline: 'Building digital worlds • One pixel at a time',
-  bio: 'Software engineer by day, retro gamer by night. I specialize in building high-performance systems and immersive digital experiences.',
+  name: 'MEHMET OZKAN',
+  title: 'PIXEL ARCHITECT • LVL 99 WIZARD',
+  tagline: 'TRANSFORMING PIXELS INTO IMMERSIVE EXPERIENCES',
+  bio: 'SPECIALIZING IN HIGH-PERFORMANCE SYSTEMS, GAME DESIGN, AND WEB SORCERY. READY TO JOIN YOUR SQUAD.',
 }
