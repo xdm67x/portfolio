@@ -8,48 +8,58 @@ function ArcadeMachine() {
   const [isInsertingCoin, setIsInsertingCoin] = useState(false)
 
   const playSound = useCallback((type: 'coin' | 'select' | 'start') => {
-    const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)()
-    const osc = audioCtx.createOscillator()
-    const gain = audioCtx.createGain()
-    
-    if (type === 'coin') {
-      osc.type = 'square'
-      osc.frequency.setValueAtTime(987.77, audioCtx.currentTime)
-      osc.frequency.exponentialRampToValueAtTime(1318.51, audioCtx.currentTime + 0.1)
-      gain.gain.setValueAtTime(0.1, audioCtx.currentTime)
-      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4)
-      osc.stop(audioCtx.currentTime + 0.4)
-    } else if (type === 'select') {
-      osc.type = 'triangle'
-      osc.frequency.setValueAtTime(440, audioCtx.currentTime)
-      gain.gain.setValueAtTime(0.05, audioCtx.currentTime)
-      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1)
-      osc.stop(audioCtx.currentTime + 0.1)
-    } else if (type === 'start') {
-      osc.type = 'sawtooth'
-      osc.frequency.setValueAtTime(523.25, audioCtx.currentTime)
-      osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1)
-      osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.2)
-      osc.frequency.setValueAtTime(1046.50, audioCtx.currentTime + 0.3)
-      gain.gain.setValueAtTime(0.05, audioCtx.currentTime)
-      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8)
-      osc.stop(audioCtx.currentTime + 0.8)
-    }
+    try {
+      const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)()
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume()
+      }
+      const osc = audioCtx.createOscillator()
+      const gain = audioCtx.createGain()
+      
+      if (type === 'coin') {
+        osc.type = 'square'
+        osc.frequency.setValueAtTime(987.77, audioCtx.currentTime)
+        osc.frequency.exponentialRampToValueAtTime(1318.51, audioCtx.currentTime + 0.1)
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime)
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4)
+        osc.stop(audioCtx.currentTime + 0.4)
+      } else if (type === 'select') {
+        osc.type = 'triangle'
+        osc.frequency.setValueAtTime(440, audioCtx.currentTime)
+        gain.gain.setValueAtTime(0.05, audioCtx.currentTime)
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1)
+        osc.stop(audioCtx.currentTime + 0.1)
+      } else if (type === 'start') {
+        osc.type = 'sawtooth'
+        osc.frequency.setValueAtTime(523.25, audioCtx.currentTime)
+        osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1)
+        osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.2)
+        osc.frequency.setValueAtTime(1046.50, audioCtx.currentTime + 0.3)
+        gain.gain.setValueAtTime(0.05, audioCtx.currentTime)
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8)
+        osc.stop(audioCtx.currentTime + 0.8)
+      }
 
-    osc.connect(gain)
-    gain.connect(audioCtx.destination)
-    osc.start()
+      osc.connect(gain)
+      gain.connect(audioCtx.destination)
+      osc.start()
+    } catch (e) {
+      console.warn('Audio failed to play', e)
+    }
   }, [])
 
   const handleInsertCoin = () => {
-    if (isInsertingCoin) return
+    if (isInsertingCoin || gameState !== 'title') return
     setIsInsertingCoin(true)
     playSound('coin')
-    setTimeout(() => {
+    
+    const timeout = setTimeout(() => {
       setGameState('select')
       playSound('start')
       setIsInsertingCoin(false)
-    }, 1000)
+    }, 1200)
+
+    return () => clearTimeout(timeout)
   }
 
   const handleNext = () => {
@@ -78,90 +88,78 @@ function ArcadeMachine() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [gameState])
 
-  const currentProject = projects[selectedIndex]
+  const currentProject = projects[selectedIndex] || { title: 'ERROR', description: 'NO DATA', image: '', longDescription: '', techStack: [] }
 
   return (
-    <div className={styles.machineFrame}>
-      <div className={styles.cabinet}>
-        {/* Screen Area */}
-        <div className={styles.screenContainer}>
-          <div className={styles.screen}>
-            <div className={styles.crtOverlay} />
-            
-            {gameState === 'title' && (
-              <div className={styles.titleScreen}>
-                <p className={styles.blink}>INSERT COIN</p>
-                <h1 className={styles.glitchText}>{heroContent.name}</h1>
-                <h2 className={styles.subtitle}>{heroContent.title}</h2>
-                <button className={styles.startBtn} onClick={handleInsertCoin} disabled={isInsertingCoin}>
-                  {isInsertingCoin ? 'LOADING...' : 'PRESS START'}
-                </button>
-              </div>
-            )}
-
-            {gameState === 'select' && (
-              <div className={styles.selectScreen}>
-                <header className={styles.selectHeader}>
-                  <h3>SELECT MISSION</h3>
-                  <div className={styles.stats}>
-                    <span>SCORE: 000{selectedIndex}00</span>
-                    <span>LIVES: 3</span>
-                  </div>
-                </header>
-
-                <div className={styles.carousel}>
-                  <button className={styles.navBtn} onClick={handlePrev}>{'<'}</button>
-                  <div className={styles.projectCard}>
-                    <div className={styles.pixelBorder}>
-                      <img src={currentProject.image} alt={currentProject.title} className={styles.projectImage} />
-                    </div>
-                    <h2 className={styles.projectTitle}>{currentProject.title}</h2>
-                    <p className={styles.projectDesc}>{currentProject.description}</p>
-                  </div>
-                  <button className={styles.navBtn} onClick={handleNext}>{'>'}</button>
-                </div>
-
-                <div className={styles.selectionFooter}>
-                  <button className={styles.actionBtn} onClick={() => setGameState('details')}>VIEW SPECS</button>
-                </div>
-              </div>
-            )}
-
-            {gameState === 'details' && (
-              <div className={styles.detailsScreen}>
-                <button className={styles.backBtn} onClick={() => setGameState('select')}>BACK</button>
-                <div className={styles.detailsLayout}>
-                  <div className={styles.detailsText}>
-                    <h2>{currentProject.title}</h2>
-                    <p className={styles.longDesc}>{currentProject.longDescription}</p>
-                    <div className={styles.techStack}>
-                      {currentProject.techStack.map(tech => (
-                        <span key={tech} className={styles.badge}>{tech}</span>
-                      ))}
-                    </div>
-                    <div className={styles.links}>
-                      {currentProject.githubUrl && <a href={currentProject.githubUrl} target="_blank" rel="noreferrer">SOURCE CODE</a>}
-                      {currentProject.liveUrl && <a href={currentProject.liveUrl} target="_blank" rel="noreferrer">LAUNCH DEMO</a>}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Arcade Controls */}
-        <div className={styles.controlPanel}>
-          <div className={styles.joystickContainer}>
-            <div className={styles.joystickBase}>
-              <div className={`${styles.joystickStick} ${gameState === 'select' ? styles.stickMove : ''}`} />
+    <div className={styles.screenWrapper}>
+      <div className={`${styles.screen} ${gameState !== 'title' ? styles.powerOn : ''}`}>
+        <div className={styles.crtOverlay} />
+        <div className={styles.scanlines} />
+        <div className={styles.vignette} />
+        
+        {isInsertingCoin && <div className={styles.coin} />}
+        
+        {gameState === 'title' && (
+          <div className={styles.titleScreen}>
+            <div className={styles.titleContent}>
+              <p className={styles.blink}>PLAYER 1 READY</p>
+              <h1 className={styles.glitchText}>{heroContent.name}</h1>
+              <h2 className={styles.subtitle}>{heroContent.title}</h2>
+              <button className={styles.startBtn} onClick={handleInsertCoin} disabled={isInsertingCoin}>
+                {isInsertingCoin ? 'INITIALIZING...' : 'PRESS START'}
+              </button>
             </div>
           </div>
-          <div className={styles.buttonsContainer}>
-            <div className={styles.actionButton} onClick={() => gameState === 'select' && setGameState('details')} />
-            <div className={`${styles.actionButton} ${styles.blue}`} onClick={handleInsertCoin} />
+        )}
+
+        {gameState === 'select' && (
+          <div className={styles.selectScreen}>
+            <header className={styles.selectHeader}>
+              <h3>SELECT MISSION</h3>
+            </header>
+
+            <div className={styles.carousel}>
+              <button className={styles.navBtn} onClick={handlePrev}>{'<'}</button>
+              <div className={styles.projectCard}>
+                <div className={styles.pixelBorder}>
+                  <img src={currentProject.image} alt={currentProject.title} className={styles.projectImage} />
+                </div>
+                <div className={styles.projectInfo}>
+                  <h2 className={styles.projectTitle}>{currentProject.title}</h2>
+                  <p className={styles.projectDesc}>{currentProject.description}</p>
+                </div>
+              </div>
+              <button className={styles.navBtn} onClick={handleNext}>{'>'}</button>
+            </div>
+
+            <div className={styles.selectionFooter}>
+              <button className={styles.actionBtn} onClick={() => setGameState('details')}>LAUNCH PROJECT SPECS</button>
+            </div>
           </div>
-        </div>
+        )}
+
+        {gameState === 'details' && (
+          <div className={styles.detailsScreen}>
+            <button className={styles.backBtn} onClick={() => setGameState('select')}>{'<'} RETURN TO MENU</button>
+            <div className={styles.detailsLayout}>
+              <div className={styles.detailsText}>
+                <h2 className={styles.detailTitle}>{currentProject.title}</h2>
+                <div className={styles.detailBody}>
+                  <p className={styles.longDesc}>{currentProject.longDescription}</p>
+                  <div className={styles.techStack}>
+                    {currentProject.techStack.map(tech => (
+                      <span key={tech} className={styles.badge}>{tech}</span>
+                    ))}
+                  </div>
+                  <div className={styles.links}>
+                    {currentProject.githubUrl && <a href={currentProject.githubUrl} target="_blank" rel="noreferrer">[{'>'} VIEW SOURCE]</a>}
+                    {currentProject.liveUrl && <a href={currentProject.liveUrl} target="_blank" rel="noreferrer">[{'>'} LAUNCH DEMO]</a>}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
