@@ -3,7 +3,7 @@ import { projects, heroContent } from '../data/projects'
 import styles from './ArcadeMachine.module.css'
 
 function ArcadeMachine() {
-  const [gameState, setGameState] = useState<'title' | 'select' | 'details'>('title')
+  const [gameState, setGameState] = useState<'title' | 'select'>('title')
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [isInsertingCoin, setIsInsertingCoin] = useState(false)
 
@@ -72,6 +72,11 @@ function ArcadeMachine() {
     playSound('select')
   }
 
+  const goHome = () => {
+    setGameState('title')
+    playSound('select')
+  }
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (gameState === 'title') {
@@ -79,9 +84,7 @@ function ArcadeMachine() {
       } else if (gameState === 'select') {
         if (e.key === 'ArrowRight') handleNext()
         if (e.key === 'ArrowLeft') handlePrev()
-        if (e.key === 'Enter') setGameState('details')
-      } else if (gameState === 'details') {
-        if (e.key === 'Escape' || e.key === 'Backspace') setGameState('select')
+        if (e.key === 'Escape') goHome()
       }
     }
     window.addEventListener('keydown', handleKeyDown)
@@ -105,6 +108,7 @@ function ArcadeMachine() {
               <p className={styles.blink}>PLAYER 1 READY</p>
               <h1 className={styles.glitchText}>{heroContent.name}</h1>
               <h2 className={styles.subtitle}>{heroContent.title}</h2>
+              <div className={styles.homeBio}>{heroContent.bio}</div>
               <button className={styles.startBtn} onClick={handleInsertCoin} disabled={isInsertingCoin}>
                 {isInsertingCoin ? 'INITIALIZING...' : 'PRESS START'}
               </button>
@@ -115,7 +119,8 @@ function ArcadeMachine() {
         {gameState === 'select' && (
           <div className={styles.selectScreen}>
             <header className={styles.selectHeader}>
-              <h3>SELECT MISSION</h3>
+              <button className={styles.homeBtn} onClick={goHome}>[ HOME ]</button>
+              <h3>MISSION SELECT</h3>
             </header>
 
             <div className={styles.carousel}>
@@ -126,37 +131,25 @@ function ArcadeMachine() {
                 </div>
                 <div className={styles.projectInfo}>
                   <h2 className={styles.projectTitle}>{currentProject.title}</h2>
-                  <p className={styles.projectDesc}>{currentProject.description}</p>
+                  <p className={styles.projectLongDesc}>{currentProject.longDescription}</p>
+                  
+                  <div className={styles.techStack}>
+                    {currentProject.techStack.map(tech => (
+                      <span key={tech} className={styles.badge}>{tech}</span>
+                    ))}
+                  </div>
+
+                  <div className={styles.links}>
+                    {currentProject.githubUrl && <a href={currentProject.githubUrl} target="_blank" rel="noreferrer">[{'>'} SOURCE]</a>}
+                    {currentProject.liveUrl && <a href={currentProject.liveUrl} target="_blank" rel="noreferrer">[{'>'} DEMO]</a>}
+                  </div>
                 </div>
               </div>
               <button className={styles.navBtn} onClick={handleNext}>{'>'}</button>
             </div>
 
             <div className={styles.selectionFooter}>
-              <button className={styles.actionBtn} onClick={() => setGameState('details')}>LAUNCH PROJECT SPECS</button>
-            </div>
-          </div>
-        )}
-
-        {gameState === 'details' && (
-          <div className={styles.detailsScreen}>
-            <button className={styles.backBtn} onClick={() => setGameState('select')}>{'<'} RETURN TO MENU</button>
-            <div className={styles.detailsLayout}>
-              <div className={styles.detailsText}>
-                <h2 className={styles.detailTitle}>{currentProject.title}</h2>
-                <div className={styles.detailBody}>
-                  <p className={styles.longDesc}>{currentProject.longDescription}</p>
-                  <div className={styles.techStack}>
-                    {currentProject.techStack.map(tech => (
-                      <span key={tech} className={styles.badge}>{tech}</span>
-                    ))}
-                  </div>
-                  <div className={styles.links}>
-                    {currentProject.githubUrl && <a href={currentProject.githubUrl} target="_blank" rel="noreferrer">[{'>'} VIEW SOURCE]</a>}
-                    {currentProject.liveUrl && <a href={currentProject.liveUrl} target="_blank" rel="noreferrer">[{'>'} LAUNCH DEMO]</a>}
-                  </div>
-                </div>
-              </div>
+              <p className={styles.hint}>USE ARROWS TO NAVIGATE • ESC FOR HOME</p>
             </div>
           </div>
         )}

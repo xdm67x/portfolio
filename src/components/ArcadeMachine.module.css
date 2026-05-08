@@ -17,7 +17,6 @@
   overflow: hidden;
   display: flex;
   box-shadow: inset 0 0 100px rgba(0, 0, 0, 1);
-  /* Gentle CRT curvature effect */
   transform: perspective(1000px) rotateX(1deg);
 }
 
@@ -56,7 +55,7 @@
   pointer-events: none;
 }
 
-.titleScreen, .selectScreen, .detailsScreen {
+.titleScreen, .selectScreen {
   flex: 1;
   width: 100%;
   height: 100%;
@@ -64,20 +63,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem;
+  padding: 2rem;
   text-align: center;
   animation: fadeIn 0.3s steps(4);
 }
 
 .titleContent {
-  max-width: 900px;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .blink {
   font-family: var(--font-heading);
   font-size: 1rem;
   color: var(--color-accent);
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   animation: blinkAnim 1s step-end infinite;
   letter-spacing: 4px;
 }
@@ -87,28 +89,35 @@
   font-size: clamp(2rem, 8vw, 6rem);
   color: var(--color-primary);
   text-shadow: 6px 6px 0px var(--color-primary-dark);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   letter-spacing: -2px;
 }
 
 .subtitle {
   font-family: var(--font-body);
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--color-secondary);
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+}
+
+.homeBio {
+  font-family: var(--font-body);
+  font-size: 1.6rem;
+  color: var(--color-text-muted);
   max-width: 800px;
+  margin-bottom: 4rem;
+  line-height: 1.4;
 }
 
 .startBtn {
   background: var(--color-success);
   color: #000;
   font-family: var(--font-heading);
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 3.5rem;
   border: 6px solid #fff;
   cursor: pointer;
   box-shadow: 10px 10px 0px #333;
   font-size: 1rem;
-  transition: all 0.1s steps(2);
 }
 
 .startBtn:hover:not(:disabled) {
@@ -168,7 +177,24 @@
 /* Select Screen */
 .selectHeader {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
+  padding: 0 4rem;
+}
+
+.homeBtn {
+  background: #222;
+  color: #fff;
+  border: 4px solid #444;
+  padding: 0.8rem 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.selectHeader h3 {
   font-family: var(--font-heading);
   font-size: 1.2rem;
   color: var(--color-accent);
@@ -181,7 +207,7 @@
   gap: 3rem;
   flex: 1;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1300px;
 }
 
 .navBtn {
@@ -189,22 +215,16 @@
   border: none;
   color: var(--color-accent);
   font-family: var(--font-heading);
-  font-size: 4rem;
+  font-size: 4.5rem;
   cursor: pointer;
-  transition: transform 0.1s steps(2);
-}
-
-.navBtn:hover {
-  transform: scale(1.2);
-  color: #fff;
 }
 
 .projectCard {
   background: #0a0a0a;
-  padding: 2rem;
+  padding: 2.5rem;
   border: 8px solid var(--color-text);
   width: 100%;
-  max-width: 700px;
+  max-width: 850px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -215,7 +235,7 @@
   border: 4px solid #222;
   overflow: hidden;
   background: #000;
-  aspect-ratio: 16/9;
+  aspect-ratio: 21/9;
 }
 
 .projectImage {
@@ -231,93 +251,34 @@
 
 .projectTitle {
   font-family: var(--font-heading);
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--color-primary);
   margin-bottom: 1rem;
   text-shadow: 4px 4px 0px var(--color-primary-dark);
 }
 
-.projectDesc {
+.projectLongDesc {
   font-family: var(--font-body);
-  font-size: 1.6rem;
-  color: var(--color-text-muted);
-  line-height: 1.4;
-}
-
-.selectionFooter {
-  margin-top: 3rem;
-}
-
-.actionBtn {
-  padding: 1.2rem 2.5rem;
-  background: var(--color-secondary);
-  color: #fff;
-  border: 6px solid #fff;
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 8px 8px 0px #000;
-}
-
-.actionBtn:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 4px 4px 0px #000;
-  background: var(--color-primary);
-}
-
-/* Details Screen */
-.detailsScreen {
-  text-align: left;
-  align-items: flex-start;
-  justify-content: flex-start;
-  overflow-y: auto;
-}
-
-.backBtn {
-  background: #222;
-  color: #fff;
-  border: 4px solid #444;
-  padding: 0.8rem 1.5rem;
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  margin-bottom: 3rem;
-  cursor: pointer;
-}
-
-.detailsText {
-  width: 100%;
-}
-
-.detailTitle {
-  font-family: var(--font-heading);
-  font-size: 3rem;
-  color: var(--color-accent);
-  margin-bottom: 2rem;
-  text-shadow: 4px 4px 0px #000;
-}
-
-.longDesc {
-  font-family: var(--font-body);
-  font-size: 1.8rem;
-  line-height: 1.5;
-  margin-bottom: 3rem;
+  font-size: 1.5rem;
   color: var(--color-text);
+  line-height: 1.4;
+  margin-bottom: 2rem;
 }
 
 .techStack {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .badge {
   background: #111;
   color: var(--color-success);
   border: 3px solid var(--color-success);
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   font-family: var(--font-body);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .links {
@@ -327,13 +288,20 @@
 
 .links a {
   font-family: var(--font-heading);
-  font-size: 1rem;
-  color: var(--color-primary);
-  text-decoration: none;
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  text-decoration: underline;
 }
 
-.links a:hover {
-  color: var(--color-accent);
+.selectionFooter {
+  margin-top: 2rem;
+}
+
+.hint {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  color: var(--color-text-dim);
+  letter-spacing: 2px;
 }
 
 @keyframes blinkAnim {
@@ -346,7 +314,25 @@
   to { opacity: 1; filter: brightness(1); }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+  .projectCard {
+    max-width: 90%;
+  }
+  .pixelBorder {
+    aspect-ratio: 16/9;
+  }
+}
+
+@media (max-width: 800px) {
+  .glitchText {
+    font-size: 2.5rem;
+  }
+  .subtitle {
+    font-size: 1.5rem;
+  }
+  .homeBio {
+    font-size: 1.2rem;
+  }
   .carousel {
     flex-direction: column;
     gap: 1.5rem;
@@ -354,22 +340,10 @@
   .navBtn {
     font-size: 3rem;
   }
-  .projectCard {
-    max-width: 90%;
+  .selectHeader {
+    padding: 0 1rem;
   }
-}
-
-@media (max-width: 600px) {
-  .glitchText {
-    font-size: 2.5rem;
-  }
-  .subtitle {
+  .projectLongDesc {
     font-size: 1.2rem;
-  }
-  .projectTitle {
-    font-size: 1.2rem;
-  }
-  .projectDesc {
-    font-size: 1rem;
   }
 }
