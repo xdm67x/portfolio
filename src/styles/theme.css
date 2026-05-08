@@ -1,37 +1,44 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Inter:wght@400;500;600&display=swap");
 
 :root {
-  --color-bg: #0a0a0a;
-  --color-bg-gradient: #0f1115;
+  --color-bg: #000000;
+  --color-bg-gradient: #1a1a1a;
   --color-surface: #111111;
-  --color-primary: #2563eb;
-  --color-primary-dark: #1d4ed8;
-  --color-secondary: #1e3a5f;
-  --color-text: #f5f5f5;
-  --color-text-muted: #888888;
-  --color-text-dim: #555555;
+  /* Retro Palette */
+  --color-primary: #ff004d; /* Pico-8 Pink/Red */
+  --color-primary-dark: #7e2553;
+  --color-secondary: #29adff; /* Pico-8 Blue */
+  --color-accent: #ffec27; /* Pico-8 Yellow */
+  --color-success: #00e436; /* Pico-8 Green */
+  --color-text: #ffffff;
+  --color-text-muted: #abade1;
+  --color-text-dim: #5f574f;
   --color-white: #ffffff;
-  --color-border: rgba(245, 245, 245, 0.08);
-  --color-nav-bg: rgba(10, 10, 10, 0.8);
+  --color-border: #ffffff;
+  --color-nav-bg: rgba(0, 0, 0, 0.9);
 
-  --font-heading: "Outfit", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-heading: "Press Start 2P", cursive;
+  --font-body: "VT323", monospace;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 4px 4px 0px rgba(0, 0, 0, 0.8);
+  --shadow-md: 8px 8px 0px rgba(0, 0, 0, 0.8);
+  --shadow-lg: 12px 12px 0px rgba(0, 0, 0, 0.8);
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 32px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+
+  --pixel-border: 4px solid var(--color-border);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  image-rendering: pixelated;
 }
+
 
 html {
   scroll-behavior: smooth;

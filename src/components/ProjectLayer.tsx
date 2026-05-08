@@ -68,7 +68,7 @@ function ProjectLayer({ project, offset, speed }: ProjectLayerProps) {
         </animated.div>
 
         <animated.div style={textSpring} className={styles.infoSection}>
-          <span className={styles.projectLabel}>Featured Project</span>
+          <span className={styles.projectLabel}>LEVEL {Math.round(offset)}</span>
           <h2 className={styles.title}>{project.title}</h2>
           <p className={styles.description}>{project.longDescription}</p>
           <div className={styles.techStack}>

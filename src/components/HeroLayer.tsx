@@ -14,14 +14,15 @@ function HeroLayer({ offset, speed, onExplore }: HeroLayerProps) {
     <ParallaxLayer offset={offset} speed={speed} className={styles.layer}>
       <FloatingShapes color="var(--color-secondary)" count={4} />
       <div className={styles.content}>
-        <p className={styles.greeting}>Welcome</p>
+        <p className={styles.greeting}>PLAYER 1 READY</p>
         <h1 className={styles.name}>{heroContent.name}</h1>
         <h2 className={styles.title}>{heroContent.title}</h2>
         <p className={styles.tagline}>{heroContent.tagline}</p>
         <button type="button" className={styles.cta} onClick={onExplore}>
-          Explore Projects
-          <span className={styles.arrow}>↓</span>
+          PRESS START
+          <span className={styles.arrow}>→</span>
         </button>
+        <p className={styles.insertCoin}>INSERT COIN</p>
       </div>
       <div className={styles.scrollIndicator}>
         <div className={styles.mouse}>

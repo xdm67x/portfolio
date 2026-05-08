@@ -1,4 +1,4 @@
-import { Parallax } from '@react-spring/parallax'
+import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import type { IParallax } from '@react-spring/parallax'
 import type { RefObject } from 'react'
 import { useEffect, useState } from 'react'
@@ -49,6 +49,10 @@ function ParallaxContainer({ parallaxRef }: ParallaxContainerProps) {
         className={styles.parallax}
       >
         <HeroLayer offset={0} speed={0.5} onExplore={() => scrollTo(1)} />
+
+        <ParallaxLayer offset={0.9} speed={0.2} className={styles.sectionHeader}>
+          <h2 className={styles.headerText}>SELECT YOUR LEVEL</h2>
+        </ParallaxLayer>
 
         {projects.map((project, index) => (
           <ProjectLayer

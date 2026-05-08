@@ -31,6 +31,7 @@ function FloatingShapes({ color, count = 3 }: FloatingShapesProps) {
             bottom: shape.bottom,
             animationDelay: shape.delay,
             animationDuration: shape.duration,
+            clipPath: index % 2 === 0 ? 'none' : 'polygon(0% 0%, 100% 0%, 100% 70%, 70% 70%, 70% 100%, 0% 100%)',
           }}
         />
       ))}
