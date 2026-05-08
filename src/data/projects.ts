@@ -14,6 +14,17 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'rtk',
+    title: 'RTK (Rust Token Killer)',
+    description: 'CLI proxy that reduces LLM token consumption by 60-90%',
+    longDescription:
+      'Contributor to Rust Token Killer (RTK), a high-performance CLI proxy designed to drastically reduce LLM token consumption on common developer commands. Delivered as a single Rust binary with zero dependencies, it provides an efficient layer for cost-effective AI interactions.',
+    techStack: ['Rust', 'LLM', 'CLI'],
+    image: 'https://avatars.githubusercontent.com/u/258253854?v=4',
+    color: '#DEA584',
+    githubUrl: 'https://github.com/rtk-ai/rtk',
+  },
+  {
     id: 'simple-agent',
     title: 'simple-agent',
     description:
