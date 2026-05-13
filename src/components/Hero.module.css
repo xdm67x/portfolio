@@ -133,3 +133,29 @@
     letter-spacing: 0.15em;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .pixelGrid,
+  .content,
+  .blink,
+  .name,
+  .subtitle,
+  .bio {
+    animation: none;
+  }
+
+  .pixelGrid {
+    opacity: 0.5;
+  }
+
+  .content {
+    opacity: 1;
+  }
+
+  .name,
+  .subtitle,
+  .bio {
+    opacity: 1;
+    filter: none;
+  }
+}

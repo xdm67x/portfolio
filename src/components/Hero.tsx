@@ -8,7 +8,7 @@ function Hero() {
         <div className={styles.pixelGrid} />
       </div>
       <div className={styles.content}>
-        <p className={styles.blink}>{'PLAYER 1 READY'}</p>
+        <p className={styles.blink}>PLAYER 1 READY</p>
         <h1 className={styles.name}>{heroContent.name}</h1>
         <h2 className={styles.subtitle}>{heroContent.title}</h2>
         <p className={styles.bio}>{heroContent.bio}</p>
