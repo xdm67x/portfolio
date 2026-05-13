@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap");
 
 :root {
   /* Colors */
@@ -14,8 +14,8 @@
   --color-scrollbar-thumb-hover: #555;
 
   /* Fonts */
-  --font-mono: 'JetBrains Mono', 'Space Mono', 'IBM Plex Mono', monospace;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "Space Mono", "IBM Plex Mono", monospace;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -63,7 +63,9 @@ h3 {
 a {
   color: var(--color-text-primary);
   text-decoration: none;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
 }
 
 a:hover {
