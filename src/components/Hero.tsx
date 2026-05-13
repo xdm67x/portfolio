@@ -6,6 +6,14 @@ function Hero() {
     <section className={styles.hero}>
       <div className={styles.background}>
         <div className={styles.pixelGrid} />
+        <div className={styles.pixel} />
+        <div className={styles.pixel} />
+        <div className={styles.pixel} />
+        <div className={styles.pixel} />
+        <div className={styles.pixel} />
+        <div className={styles.pixel} />
+        <div className={styles.pixel} />
+        <div className={styles.pixel} />
       </div>
       <div className={styles.content}>
         <p className={styles.blink}>PLAYER 1 READY</p>
