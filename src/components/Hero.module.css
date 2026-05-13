@@ -1,0 +1,135 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-bg-primary);
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.pixelGrid {
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+  animation: fadeInBg 1s ease-out;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+  padding: var(--spacing-md);
+  animation: fadeInContent 1.2s ease-out 0.2s both;
+}
+
+.blink {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: 0.2em;
+  animation: blink 1s step-end infinite;
+}
+
+.name {
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 10vw, 8rem);
+  font-weight: 700;
+  color: var(--color-text-accent);
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.02em;
+  animation: depixelize 1s ease-out 0.3s both;
+  text-shadow: 0 4px 20px rgba(255, 0, 77, 0.2);
+}
+
+.subtitle {
+  font-family: var(--font-mono);
+  font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: 0.1em;
+  animation: fadeIn 0.8s ease-out 0.8s both;
+}
+
+.bio {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeIn 0.8s ease-out 1s both;
+}
+
+@keyframes fadeInBg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes depixelize {
+  0% {
+    filter: blur(4px);
+    opacity: 0.5;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: var(--spacing-sm);
+  }
+
+  .blink {
+    font-size: 0.625rem;
+    letter-spacing: 0.15em;
+  }
+}
