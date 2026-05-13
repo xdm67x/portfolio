@@ -494,9 +494,9 @@ src/
 
 ---
 
-## Open Questions
+## Resolved Questions
 
-- Depixelization animation: CSS keyframes or Framer Motion?
-- Keep existing `longDescription` field? (not displayed but could be used for modals in future)
-- Social links: which platforms? (GitHub confirmed, others?)
-- Cursor custom pixel art: custom SVG or simple CSS?
+**Depixelization animation:** CSS keyframes (no Framer Motion dependency)  
+**longDescription field:** Remove from project data (keep code clean, only use short descriptions)  
+**Social links:** GitHub, LinkedIn, Email  
+**Cursor:** Simple CSS or custom SVG (TBD during implementation)
