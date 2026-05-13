@@ -4,7 +4,6 @@ export interface Project {
   id: string
   title: string
   description: string
-  longDescription: string
   techStack: string[]
   image: string
   color: string
@@ -17,8 +16,6 @@ export const projects: Project[] = [
     id: 'rtk',
     title: 'RTK (Rust Token Killer)',
     description: 'CLI proxy that reduces LLM token consumption by 60-90%',
-    longDescription:
-      'Contributor to Rust Token Killer (RTK), a high-performance CLI proxy designed to drastically reduce LLM token consumption on common developer commands. Delivered as a single Rust binary with zero dependencies, it provides an efficient layer for cost-effective AI interactions.',
     techStack: ['Rust', 'LLM', 'CLI'],
     image: 'https://avatars.githubusercontent.com/u/258253854?v=4',
     color: '#DEA584',
@@ -29,8 +26,6 @@ export const projects: Project[] = [
     title: 'simple-agent',
     description:
       'An interactive AI coding agent that runs locally on your computer',
-    longDescription:
-      'Simple Agent is an interactive general-purpose AI agent powered by Ollama that runs locally on your computer. Capable of executing software engineering tasks by taking direct action on your filesystem using Bash and AskUser tools. Follows an Observe -> Act -> Review cycle for reliable code changes.',
     techStack: ['Go', 'Ollama', 'Coding Agent'],
     image: `${BASE_URL}assets/simple-agent.svg`,
     color: '#22d3ee',
@@ -40,8 +35,6 @@ export const projects: Project[] = [
     id: 'cargo-feature-guard',
     title: 'cargo-feature-guard',
     description: 'Validate Cargo feature propagation across a workspace',
-    longDescription:
-      'A Rust CLI tool that catches common mistakes like forgetting to forward a feature flag through intermediate crates. Uses cargo tree as the source of truth to detect feature gaps and verify forbidden features never leak into production builds.',
     techStack: ['Rust', 'Cargo'],
     image: `${BASE_URL}assets/cargo-feature-guard.svg`,
     color: '#CE422B',
@@ -51,8 +44,6 @@ export const projects: Project[] = [
     id: 'quick-xml',
     title: 'quick-xml',
     description: 'Rust high performance xml reader and writer',
-    longDescription:
-      'Contributed performance optimizations and bug fixes to quick-xml, a Rust XML reader and writer library known for its high performance and low memory footprint.',
     techStack: ['Rust'],
     image: `${BASE_URL}assets/quick-xml.svg`,
     color: '#DEA584',
@@ -63,8 +54,6 @@ export const projects: Project[] = [
     title: 'electrotest',
     description:
       'CLI automation tool for testing Electron apps using Gherkin and CDP',
-    longDescription:
-      'A CLI automation tool for testing Electron applications using Gherkin syntax and the Chrome DevTools Protocol (CDP). Write end-to-end tests for Electron apps using human-readable .feature files.',
     techStack: ['Rust', 'Tokio', 'CDP'],
     image: `${BASE_URL}assets/electrotest.svg`,
     color: '#47848F',
@@ -74,8 +63,6 @@ export const projects: Project[] = [
     id: 'soft-delight',
     title: 'Soft Delight',
     description: 'A comfortable, eye-friendly VS Code theme for developers',
-    longDescription:
-      'A comfortable, eye-friendly VS Code theme for developers who spend long hours coding. Features both a light and dark variant with carefully selected colors that provide excellent contrast without causing eye strain.',
     techStack: ['TypeScript', 'JSON', 'VS Code'],
     image:
       'https://raw.githubusercontent.com/xdm67x/soft-delight/main/images/dark.png',
@@ -86,8 +73,6 @@ export const projects: Project[] = [
     id: 'chip8',
     title: 'chip8',
     description: 'Chip8 emulator written in C++',
-    longDescription:
-      'A Chip8 emulator written in C++. Supports running classic Chip8 games and demos with accurate instruction emulation.',
     techStack: ['C++', 'CMake'],
     image: 'https://raw.githubusercontent.com/dm67x/chip8/main/test.png',
     color: '#4A90D9',
