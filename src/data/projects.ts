@@ -84,5 +84,5 @@ export const heroContent = {
   name: 'MEHMET OZKAN',
   title: 'PIXEL ARCHITECT • LVL 99 WIZARD',
   tagline: 'TRANSFORMING PIXELS INTO IMMERSIVE EXPERIENCES',
-  bio: 'AI ENTHUSIAST, VIDEO GAME AFICIONADO, AND MASTER OF WEB SORCERY. READY TO JOIN YOUR SQUAD.',
+  bio: 'AI enthusiast, video game aficionado, crafting web experiences. Ready to join your squad.',
 }
