@@ -62,34 +62,11 @@
   font-weight: 500;
   color: var(--project-color);
   padding: 0.5rem 1rem;
-  /* Pixel-style border with stair-step corners */
-  border: 2px solid var(--project-color);
-  background-color: transparent;
-  position: relative;
-  display: inline-block;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  /* Create pixel-box effect */
-  box-shadow:
-    inset -2px -2px 0 0 rgba(0, 0, 0, 0.3),
-    inset 2px 2px 0 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.15s ease;
-}
-
-.link:hover {
-  background-color: var(--project-color);
-  color: #000;
-  transform: translateY(-1px);
-  box-shadow:
-    inset -2px -2px 0 0 rgba(0, 0, 0, 0.5),
-    inset 2px 2px 0 0 rgba(255, 255, 255, 0.2);
-}
-
-.link:active {
-  transform: translateY(1px);
-  box-shadow:
-    inset 2px 2px 0 0 rgba(0, 0, 0, 0.5),
-    inset -2px -2px 0 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--project-color);
+  border-radius: var(--radius-sm);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .link:hover {
@@ -133,31 +110,12 @@
 }
 
 .badge {
-  position: relative;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--color-text-secondary);
   background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.25rem 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  /* Pixel corners - stair-step effect */
-  clip-path: polygon(
-    4px 0px,
-    calc(100% - 4px) 0px,
-    100% 4px,
-    100% calc(100% - 4px),
-    calc(100% - 4px) 100%,
-    4px 100%,
-    0px calc(100% - 4px),
-    0px 4px
-  );
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.badge:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-sm);
 }
