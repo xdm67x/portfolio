@@ -3,9 +3,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: sticky;
+  top: 0;
   overflow: hidden;
   background-color: var(--color-bg-primary);
+  z-index: 1;
 }
 
 /* Background grid */
