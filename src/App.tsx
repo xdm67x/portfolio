@@ -7,6 +7,7 @@ function App() {
   return (
     <>
       <Hero />
+      <div style={{ height: '100vh' }} />
       <ProjectsGrid />
       <Footer />
     </>
