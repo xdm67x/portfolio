@@ -4,6 +4,8 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.06);
   padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
   transition:
     border-color var(--transition-smooth),
     transform var(--transition-smooth),
@@ -88,6 +90,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;
+  margin-top: auto;
 }
 
 .badge {
