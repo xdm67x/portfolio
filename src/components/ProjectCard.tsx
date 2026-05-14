@@ -1,15 +1,26 @@
 import type { Project } from '../data/projects'
+import { useInView } from '../hooks/useInView'
 import styles from './ProjectCard.module.css'
 
 interface ProjectCardProps {
   project: Project
+  index: number
+  featured?: boolean
 }
 
-function ProjectCard({ project }: ProjectCardProps) {
+function ProjectCard({ project, index, featured }: ProjectCardProps) {
+  const { ref, isInView } = useInView(0.1)
+
   return (
     <article
-      className={styles.card}
-      style={{ '--project-color': project.color } as React.CSSProperties}
+      ref={ref}
+      className={`${styles.card} ${featured ? styles.featured : ''} ${isInView ? styles.revealed : ''}`}
+      style={
+        {
+          '--project-color': project.color,
+          '--reveal-delay': `${index * 0.1}s`,
+        } as React.CSSProperties
+      }
     >
       <div className={styles.imageContainer}>
         <img
@@ -27,7 +38,9 @@ function ProjectCard({ project }: ProjectCardProps) {
                 rel="noopener noreferrer"
                 className={styles.link}
               >
-                [SOURCE]
+                <span className={styles.linkBracket}>[</span>
+                SOURCE
+                <span className={styles.linkBracket}>]</span>
               </a>
             )}
             {project.liveUrl && (
@@ -37,13 +50,16 @@ function ProjectCard({ project }: ProjectCardProps) {
                 rel="noopener noreferrer"
                 className={styles.link}
               >
-                [DEMO]
+                <span className={styles.linkBracket}>[</span>
+                DEMO
+                <span className={styles.linkBracket}>]</span>
               </a>
             )}
           </div>
         </div>
       </div>
       <div className={styles.content}>
+        <div className={styles.index}>{String(index + 1).padStart(2, '0')}</div>
         <h3 className={styles.title}>{project.title}</h3>
         <p className={styles.description}>{project.description}</p>
         <div className={styles.techStack}>

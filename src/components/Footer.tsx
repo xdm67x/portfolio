@@ -6,6 +6,10 @@ function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
+        <div className={styles.left}>
+          <span className={styles.label}>{'<EOH />'}</span>
+          <p className={styles.copyright}>© {currentYear} Mehmet Ozkan</p>
+        </div>
         <nav className={styles.social}>
           <a
             href="https://github.com/xdm67x"
@@ -42,9 +46,6 @@ function Footer() {
             </svg>
           </a>
         </nav>
-        <p className={styles.copyright}>
-          © {currentYear} Mehmet Ozkan. All rights reserved.
-        </p>
       </div>
     </footer>
   )
