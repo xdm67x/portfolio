@@ -2,7 +2,6 @@
   background-color: var(--color-bg-primary);
   padding: 8rem 2rem;
   position: relative;
-  z-index: 1;
 }
 
 .section::before {
