@@ -21,4 +21,6 @@
 # Stylance generated CSS bundle
 /styles/bundle.css
 
+/dist
+
 /target
