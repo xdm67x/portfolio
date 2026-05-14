@@ -9,11 +9,14 @@ export function useScrollProgress(distance: number) {
     ).matches
     if (prefersReducedMotion) return
 
+    // Use viewport height if no distance specified, or use the provided distance
+    const scrollDistance = distance || window.innerHeight
+
     let ticking = false
 
     function update() {
       const scrollY = window.scrollY
-      const p = Math.min(1, Math.max(0, scrollY / distance))
+      const p = Math.min(1, Math.max(0, scrollY / scrollDistance))
       setProgress(p)
       ticking = false
     }

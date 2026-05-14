@@ -39,6 +39,7 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: var(--color-text-muted) var(--color-bg-primary);
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
