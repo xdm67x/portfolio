@@ -130,21 +130,6 @@
   color: var(--project-color);
 }
 
-/* Featured card */
-.featured {
-  grid-column: 1 / -1;
-}
-
-@media (min-width: 768px) {
-  .featured {
-    grid-column: 1 / -1;
-  }
-
-  .featured .title {
-    font-size: 1.25rem;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .card {
     opacity: 1;

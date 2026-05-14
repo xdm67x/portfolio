@@ -1,11 +1,8 @@
-const BASE_URL = import.meta.env.BASE_URL
-
 export interface Project {
   id: string
   title: string
   description: string
   techStack: string[]
-  image: string
   color: string
   githubUrl?: string
   liveUrl?: string
@@ -17,7 +14,6 @@ export const projects: Project[] = [
     title: 'RTK (Rust Token Killer)',
     description: 'CLI proxy that reduces LLM token consumption by 60-90%',
     techStack: ['Rust', 'LLM', 'CLI'],
-    image: 'https://avatars.githubusercontent.com/u/258253854?v=4',
     color: '#DEA584',
     githubUrl: 'https://github.com/rtk-ai/rtk',
   },
@@ -27,7 +23,6 @@ export const projects: Project[] = [
     description:
       'An interactive AI coding agent that runs locally on your computer',
     techStack: ['Go', 'Ollama', 'Coding Agent'],
-    image: `${BASE_URL}assets/simple-agent.svg`,
     color: '#22d3ee',
     githubUrl: 'https://github.com/xdm67x/simple-agent',
   },
@@ -36,7 +31,6 @@ export const projects: Project[] = [
     title: 'cargo-feature-guard',
     description: 'Validate Cargo feature propagation across a workspace',
     techStack: ['Rust', 'Cargo'],
-    image: `${BASE_URL}assets/cargo-feature-guard.svg`,
     color: '#CE422B',
     githubUrl: 'https://github.com/xdm67x/cargo-feature-guard',
   },
@@ -45,7 +39,6 @@ export const projects: Project[] = [
     title: 'quick-xml',
     description: 'Rust high performance xml reader and writer',
     techStack: ['Rust'],
-    image: `${BASE_URL}assets/quick-xml.svg`,
     color: '#DEA584',
     githubUrl: 'https://github.com/xdm67x/quick-xml',
   },
@@ -55,7 +48,6 @@ export const projects: Project[] = [
     description:
       'CLI automation tool for testing Electron apps using Gherkin and CDP',
     techStack: ['Rust', 'Tokio', 'CDP'],
-    image: `${BASE_URL}assets/electrotest.svg`,
     color: '#47848F',
     githubUrl: 'https://github.com/xdm67x/electrotest',
   },
@@ -64,8 +56,6 @@ export const projects: Project[] = [
     title: 'Soft Delight',
     description: 'A comfortable, eye-friendly VS Code theme for developers',
     techStack: ['TypeScript', 'JSON', 'VS Code'],
-    image:
-      'https://raw.githubusercontent.com/xdm67x/soft-delight/main/images/dark.png',
     color: '#6B5B95',
     githubUrl: 'https://github.com/xdm67x/soft-delight',
   },
@@ -74,7 +64,6 @@ export const projects: Project[] = [
     title: 'chip8',
     description: 'Chip8 emulator written in C++',
     techStack: ['C++', 'CMake'],
-    image: 'https://raw.githubusercontent.com/dm67x/chip8/main/test.png',
     color: '#4A90D9',
     githubUrl: 'https://github.com/dm67x/chip8',
   },

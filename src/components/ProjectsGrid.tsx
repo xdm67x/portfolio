@@ -13,12 +13,7 @@ function ProjectsGrid() {
         </div>
         <div className={styles.grid}>
           {projects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-              featured={index === 0}
-            />
+            <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
       </div>

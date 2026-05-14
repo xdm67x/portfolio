@@ -5,16 +5,15 @@ import styles from './ProjectCard.module.css'
 interface ProjectCardProps {
   project: Project
   index: number
-  featured?: boolean
 }
 
-function ProjectCard({ project, index, featured }: ProjectCardProps) {
+function ProjectCard({ project, index }: ProjectCardProps) {
   const { ref, isInView } = useInView(0.1)
 
   return (
     <article
       ref={ref}
-      className={`${styles.card} ${featured ? styles.featured : ''} ${isInView ? styles.revealed : ''}`}
+      className={`${styles.card} ${isInView ? styles.revealed : ''}`}
       style={
         {
           '--project-color': project.color,
