@@ -3,25 +3,18 @@ import { useScrollProgress } from '../hooks/useScrollProgress'
 import styles from './Hero.module.css'
 
 function Hero() {
-  const progress = useScrollProgress(600)
+  const progress = useScrollProgress(400)
 
-  const bgOpacity = Math.max(0, 1 - progress * 1.7)
-  const decorOpacity = Math.max(0, 1 - progress * 2.5)
-  const contentOpacity = Math.max(0, 1 - progress * 2.5)
-  const contentScale = 1 - progress * 0.12
-  const contentTranslateY = -progress * 3
-  const scrollOpacity = Math.max(0, 1 - progress * 5)
-  const barRawProgress = Math.max(0, Math.min(1, (progress - 0.3) / 0.4))
-  const barOpacity = barRawProgress
-  const barTranslateY = -(1 - barRawProgress) * 20
+  const opacity = Math.max(0, 1 - progress * 2)
+  const scale = 1 - progress * 0.08
+  const translateY = -progress * 40
 
   return (
     <section className={styles.hero}>
-      <div className={styles.heroBg} style={{ opacity: bgOpacity }} />
-      <div className={styles.grid} style={{ opacity: decorOpacity * 0.5 }} />
-      <div className={styles.noise} style={{ opacity: decorOpacity * 0.03 }} />
+      <div className={styles.grid} />
+      <div className={styles.noise} />
 
-      <div className={styles.shapes} style={{ opacity: decorOpacity * 0.15 }}>
+      <div className={styles.shapes}>
         <div className={`${styles.shape} ${styles.rect}`} />
         <div className={`${styles.shape} ${styles.circle}`} />
         <div className={`${styles.shape} ${styles.diamond}`} />
@@ -30,8 +23,8 @@ function Hero() {
       <div
         className={styles.content}
         style={{
-          opacity: contentOpacity,
-          transform: `scale(${contentScale}) translateY(${contentTranslateY}vh)`,
+          opacity,
+          transform: `scale(${scale}) translateY(${translateY}px)`,
         }}
       >
         <span className={styles.label}>{'<PLAYER 1 READY>'}</span>
@@ -48,23 +41,12 @@ function Hero() {
 
       <div
         className={styles.scrollIndicator}
-        style={{ opacity: scrollOpacity }}
+        style={{ opacity: Math.max(0, 1 - progress * 4) }}
       >
         <span className={styles.scrollText}>scroll</span>
         <div className={styles.scrollLine}>
           <div className={styles.scrollDot} />
         </div>
-      </div>
-
-      <div
-        className={styles.bar}
-        style={{
-          opacity: barOpacity,
-          transform: `translateY(${barTranslateY}px)`,
-        }}
-      >
-        <span className={styles.barLabel}>{'<PLAYER 1>'}</span>
-        <span className={styles.barName}>{heroContent.name}</span>
       </div>
     </section>
   )
