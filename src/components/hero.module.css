@@ -10,8 +10,7 @@
   z-index: 1;
 }
 
-/* Background grid */
-.grid {
+.hero-grid {
   position: absolute;
   inset: 0;
   background-image:
@@ -30,7 +29,7 @@
   );
 }
 
-.noise {
+.hero-noise {
   position: absolute;
   inset: 0;
   opacity: 0.03;
@@ -39,51 +38,49 @@
   pointer-events: none;
 }
 
-/* Floating geometric shapes */
-.shapes {
+.hero-shapes {
   position: absolute;
   inset: 0;
   pointer-events: none;
   will-change: opacity;
 }
 
-.shape {
+.hero-shape {
   position: absolute;
   opacity: 0.15;
 }
 
-.rect {
+.hero-rect {
   top: 15%;
   right: 12%;
   width: 120px;
   height: 120px;
   border: 1.5px solid var(--color-cyan);
   transform: rotate(15deg);
-  animation: floatSlow 12s ease-in-out infinite;
+  animation: hero-float-slow 12s ease-in-out infinite;
 }
 
-.circle {
+.hero-circle {
   bottom: 25%;
   left: 8%;
   width: 80px;
   height: 80px;
   border: 1.5px solid var(--color-accent);
   border-radius: 50%;
-  animation: floatSlow 10s ease-in-out infinite 2s;
+  animation: hero-float-slow 10s ease-in-out infinite 2s;
 }
 
-.diamond {
+.hero-diamond {
   top: 55%;
   right: 20%;
   width: 60px;
   height: 60px;
   border: 1.5px solid var(--color-text-muted);
   transform: rotate(45deg);
-  animation: floatSlow 14s ease-in-out infinite 4s;
+  animation: hero-float-slow 14s ease-in-out infinite 4s;
 }
 
-/* Content */
-.content {
+.hero-content {
   position: relative;
   z-index: 1;
   text-align: center;
@@ -92,8 +89,7 @@
   will-change: opacity, transform;
 }
 
-/* Label */
-.label {
+.hero-label {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -106,8 +102,7 @@
   margin-bottom: var(--spacing-md);
 }
 
-/* Name with glitch */
-.name {
+.hero-name {
   font-family: var(--font-mono);
   font-size: clamp(3rem, 12vw, 9rem);
   font-weight: 700;
@@ -118,8 +113,8 @@
   position: relative;
 }
 
-.name::before,
-.name::after {
+.hero-name::before,
+.hero-name::after {
   content: attr(data-text);
   position: absolute;
   top: 0;
@@ -130,18 +125,17 @@
   pointer-events: none;
 }
 
-.name::before {
+.hero-name::before {
   color: var(--color-cyan);
-  animation: glitch1 4s infinite 2s;
+  animation: hero-glitch-1 4s infinite 2s;
 }
 
-.name::after {
+.hero-name::after {
   color: var(--color-accent);
-  animation: glitch2 4s infinite 2s;
+  animation: hero-glitch-2 4s infinite 2s;
 }
 
-/* Subtitle */
-.subtitle {
+.hero-subtitle {
   font-family: var(--font-mono);
   font-size: clamp(0.75rem, 1.2vw, 0.95rem);
   font-weight: 500;
@@ -150,16 +144,15 @@
   margin-bottom: var(--spacing-md);
 }
 
-.subtitleAccent {
+.hero-subtitle-accent {
   color: var(--color-accent);
 }
 
-.subtitleDot {
+.hero-subtitle-dot {
   color: var(--color-text-muted);
 }
 
-/* Bio */
-.bio {
+.hero-bio {
   font-family: var(--font-sans);
   font-size: clamp(0.95rem, 1vw, 1.1rem);
   color: var(--color-text-secondary);
@@ -168,8 +161,7 @@
   margin: 0 auto;
 }
 
-/* Scroll indicator */
-.scrollIndicator {
+.hero-scroll-indicator {
   position: absolute;
   bottom: 2rem;
   left: 50%;
@@ -181,7 +173,7 @@
   will-change: opacity;
 }
 
-.scrollText {
+.hero-scroll-text {
   font-family: var(--font-mono);
   font-size: 0.65rem;
   letter-spacing: 0.2em;
@@ -189,7 +181,7 @@
   text-transform: uppercase;
 }
 
-.scrollLine {
+.hero-scroll-line {
   width: 1px;
   height: 40px;
   background: var(--color-text-muted);
@@ -197,17 +189,15 @@
   overflow: hidden;
 }
 
-.scrollDot {
+.hero-scroll-dot {
   width: 1px;
   height: 10px;
   background: var(--color-text-accent);
-  animation: scrollDot 2s ease-in-out infinite;
+  animation: hero-scroll-dot-anim 2s ease-in-out infinite;
 }
 
-/* Animations */
-@keyframes floatSlow {
-  0%,
-  100% {
+@keyframes hero-float-slow {
+  0%, 100% {
     transform: translateY(0) rotate(15deg);
   }
   50% {
@@ -215,7 +205,7 @@
   }
 }
 
-@keyframes scrollDot {
+@keyframes hero-scroll-dot-anim {
   0% {
     transform: translateY(-10px);
   }
@@ -224,10 +214,8 @@
   }
 }
 
-@keyframes glitch1 {
-  0%,
-  88%,
-  100% {
+@keyframes hero-glitch-1 {
+  0%, 88%, 100% {
     opacity: 0;
     clip-path: inset(0);
     transform: translate(0);
@@ -254,10 +242,8 @@
   }
 }
 
-@keyframes glitch2 {
-  0%,
-  91%,
-  100% {
+@keyframes hero-glitch-2 {
+  0%, 91%, 100% {
     opacity: 0;
     clip-path: inset(0);
     transform: translate(0);
@@ -284,31 +270,30 @@
   }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .content {
+  .hero-content {
     padding: var(--spacing-sm);
   }
 
-  .label {
+  .hero-label {
     font-size: 0.6rem;
   }
 
-  .rect {
+  .hero-rect {
     width: 80px;
     height: 80px;
     top: 10%;
     right: 5%;
   }
 
-  .circle {
+  .hero-circle {
     width: 50px;
     height: 50px;
     bottom: 20%;
     left: 5%;
   }
 
-  .diamond {
+  .hero-diamond {
     width: 40px;
     height: 40px;
     right: 10%;
@@ -316,23 +301,23 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .shape,
-  .scrollDot,
-  .name::before,
-  .name::after {
+  .hero-shape,
+  .hero-scroll-dot,
+  .hero-name::before,
+  .hero-name::after {
     animation: none;
   }
 
-  .name::before,
-  .name::after {
+  .hero-name::before,
+  .hero-name::after {
     display: none;
   }
 
-  .grid {
+  .hero-grid {
     opacity: 0.5;
   }
 
-  .scrollDot {
+  .hero-scroll-dot {
     position: static;
     height: 10px;
     background: var(--color-text-accent);
