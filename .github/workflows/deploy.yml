@@ -37,7 +37,7 @@ jobs:
         run: cargo install stylance-cli
 
       - name: Generate CSS bundle
-        run: cargo stylance bundle
+        run: stylance bundle
 
       - name: Build with Trunk
         run: trunk build --release --public-url "${GITHUB_REPOSITORY#*/}"
