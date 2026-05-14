@@ -33,6 +33,12 @@ jobs:
       - name: Install Trunk
         uses: jetli/trunk-action@v0.5.0
 
+      - name: Install Stylance CLI
+        run: cargo install stylance-cli
+
+      - name: Generate CSS bundle
+        run: cargo stylance bundle
+
       - name: Build with Trunk
         run: trunk build --release --public-url "${GITHUB_REPOSITORY#*/}"
 
