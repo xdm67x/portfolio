@@ -9,10 +9,9 @@ pub fn ProjectCard(#[prop(into)] project: Project, index: usize) -> impl IntoVie
     let Project {
         title,
         description,
-        tech_stack,
+        tags,
         color,
         github_url,
-        is_contributor,
         ..
     } = project;
     let delay = format!("{:.1}s", index as f64 * 0.12);
@@ -33,10 +32,7 @@ pub fn ProjectCard(#[prop(into)] project: Project, index: usize) -> impl IntoVie
             </div>
             <p class=style::description>{description}</p>
             <div class=style::techStack>
-                {is_contributor.then_some(view! {
-                    <span class=style::badge>contributor</span>
-                })}
-                {tech_stack.into_iter().map(|tech| {
+                {tags.into_iter().map(|tech| {
                     view! {
                         <span class=style::badge>{tech}</span>
                     }

@@ -3,72 +3,64 @@
     "id": "rtk",
     "title": "RTK (Rust Token Killer)",
     "description": "CLI proxy that reduces LLM token consumption by 60-90%",
-    "tech_stack": ["Rust", "LLM", "CLI"],
+    "tags": ["Contributor", "Rust", "LLM", "CLI"],
     "color": "#DEA584",
-    "github_url": "https://github.com/rtk-ai/rtk",
-    "is_contributor": true
+    "github_url": "https://github.com/rtk-ai/rtk"
   },
   {
     "id": "simple-agent",
     "title": "simple-agent",
     "description": "An interactive AI coding agent that runs locally on your computer",
-    "tech_stack": ["Go", "Ollama", "Coding Agent"],
+    "tags": ["Go", "Coding Agent", "Harness"],
     "color": "#22d3ee",
-    "github_url": "https://github.com/xdm67x/simple-agent",
-    "is_contributor": false
+    "github_url": "https://github.com/xdm67x/simple-agent"
   },
   {
     "id": "cargo-feature-guard",
     "title": "cargo-feature-guard",
     "description": "Validate Cargo feature propagation across a workspace",
-    "tech_stack": ["Rust", "Cargo"],
+    "tags": ["Rust", "Cargo", "Feature Guard"],
     "color": "#CE422B",
-    "github_url": "https://github.com/xdm67x/cargo-feature-guard",
-    "is_contributor": false
+    "github_url": "https://github.com/xdm67x/cargo-feature-guard"
   },
   {
     "id": "quick-xml",
     "title": "quick-xml",
     "description": "Rust high performance xml reader and writer",
-    "tech_stack": ["Rust"],
+    "tags": ["Contributor", "Rust", "XML"],
     "color": "#DEA584",
-    "github_url": "https://github.com/xdm67x/quick-xml",
-    "is_contributor": true
+    "github_url": "https://github.com/tafia/quick-xml"
   },
   {
     "id": "electrotest",
     "title": "electrotest",
     "description": "CLI automation tool for testing Electron apps using Gherkin and CDP",
-    "tech_stack": ["Rust", "Tokio", "CDP"],
+    "tags": ["Rust", "Tokio", "Electron", "Testing", "CDP"],
     "color": "#47848F",
-    "github_url": "https://github.com/xdm67x/electrotest",
-    "is_contributor": false
+    "github_url": "https://github.com/xdm67x/electrotest"
   },
   {
     "id": "soft-delight",
     "title": "Soft Delight",
     "description": "A comfortable, eye-friendly VS Code theme for developers",
-    "tech_stack": ["TypeScript", "JSON", "VS Code"],
+    "tags": ["TypeScript", "JSON", "VS Code", "Theme"],
     "color": "#6B5B95",
-    "github_url": "https://github.com/xdm67x/soft-delight",
-    "is_contributor": false
+    "github_url": "https://github.com/xdm67x/soft-delight"
   },
   {
     "id": "chip8",
     "title": "chip8",
     "description": "Chip8 emulator written in C++",
-    "tech_stack": ["C++", "CMake"],
+    "tags": ["C++", "CMake", "Chip8"],
     "color": "#4A90D9",
-    "github_url": "https://github.com/dm67x/chip8",
-    "is_contributor": false
+    "github_url": "https://github.com/dm67x/chip8"
   },
   {
     "id": "portfolio",
-    "title": "This website",
+    "title": "Portfolio",
     "description": "Personal portfolio website built with Leptos and Rust",
-    "tech_stack": ["Rust", "Leptos", "WASM"],
+    "tags": ["Rust", "Leptos", "WASM"],
     "color": "#F74C00",
-    "github_url": "https://github.com/xdm67x/xdm67x.github.io",
-    "is_contributor": false
+    "github_url": "https://github.com/xdm67x/xdm67x.github.io"
   }
 ]

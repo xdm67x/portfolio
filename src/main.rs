@@ -11,10 +11,9 @@ pub struct Project {
     id: String,
     title: String,
     description: String,
-    tech_stack: Vec<String>,
+    tags: Vec<String>,
     color: String,
     github_url: String,
-    is_contributor: bool,
 }
 
 static PROJECTS: LazyLock<Vec<Project>> = LazyLock::new(|| {
