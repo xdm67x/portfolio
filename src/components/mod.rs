@@ -1,6 +1,6 @@
 mod hero;
-mod projects_grid;
 mod project_card;
+mod projects_grid;
 
 pub use hero::Hero;
 pub use projects_grid::ProjectsGrid;

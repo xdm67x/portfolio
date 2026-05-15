@@ -1,11 +1,12 @@
+use crate::hooks::use_scroll_progress;
 use leptos::prelude::*;
 use stylance::{classes, import_crate_style};
-use crate::hooks::use_scroll_progress;
 
 import_crate_style!(style, "src/components/hero.module.css");
 
 const HERO_NAME: &str = "MEHMET OZKAN";
-const HERO_BIO: &str = "AI enthusiast, video game aficionado, crafting web experiences. Ready to join your squad.";
+const HERO_BIO: &str =
+    "AI enthusiast, video game aficionado, crafting web experiences. Ready to join your squad.";
 const HERO_LABEL: &str = "<PLAYER 1 READY>";
 
 #[component]

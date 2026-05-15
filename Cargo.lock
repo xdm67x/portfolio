@@ -2407,6 +2407,8 @@ dependencies = [
  "console_error_panic_hook",
  "leptos",
  "leptos-use",
+ "serde",
+ "serde_json",
  "stylance",
  "web-sys",
 ]
